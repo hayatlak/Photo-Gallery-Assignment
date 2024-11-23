@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery</title>
+    <style>
+        #image {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 300px;
+            font-size: 20px;
+            background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+
+        .preview {
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Photo Gallery</h1>
+    <div id="image">Hover over an image below to display here.</div>
+    <img class="preview" src="image1.jpg" alt="Image 1" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="image2.jpg" alt="Image 2" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="image3.jpg" alt="Image 3" onmouseover="upDate(this)" onmouseout="undo()">
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+    function upDate(previewPic) {
+    // Log for debugging
+    console.log("Hovering over:", previewPic.alt);
+
+    // Get the #image div
+    const imageDiv = document.getElementById("image");
+
+    // Update background image
+    imageDiv.style.backgroundImage = `url(${previewPic.src})`;
+
+    // Update the text
+    imageDiv.innerHTML = previewPic.alt;
+}
+
+function undo() {
+    // Get the #image div
+    const imageDiv = document.getElementById("image");
+
+    // Reset background image and text
+    imageDiv.style.backgroundImage = '';
+    imageDiv.innerHTML = "Hover over an image below to display here.";
+}
+
+</script>
+</body>
+</html>
